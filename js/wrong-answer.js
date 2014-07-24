@@ -1,14 +1,20 @@
 $(function() {
 
     $('#btn-generate').click(function() {
-        var text = $('#ta-wrong-message').val();
+        var wrongAnswerText = $('#ta-wrong-message').val();
 
-        if (text) {
+        if (wrongAnswerText) {
             $('#form-enter-message').fadeOut(500, function() {
+                $('#form-url').fadeIn(500, function() {      
+                    var locArray = window.location.href.split('/');
+                    var buildURL = '';
 
+                    // -1 so we take off the index.html
+                    for(var i = 0; i < locArray.length -1;i++){
+                       buildURL += locArray[i] + '/';
+                    }
 
-                $('#form-url').fadeIn(500, function() {
-
+                   $('#inp-wrong-message').val(buildURL + 'q.html?q=' + encodeURIComponent(wrongAnswerText));
                 })
             });
 
@@ -27,4 +33,8 @@ $(function() {
 
     });
 
+    $('#btn-test-link').click(function(){
+       window.open($('#inp-wrong-message').val()); 
+        
+    });
 });
