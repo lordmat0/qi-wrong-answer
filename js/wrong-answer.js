@@ -2,11 +2,13 @@ $(function() {
 
     $('#btn-generate').click(function() {
         var text = $('#ta-wrong-message').val();
-        var baseURL = location.href.substring(0, location.href.lastIndexOf("/") + 1);
-        var page = 'q.html?q=' + text;
-        $('#q-url').val(baseURL + page);
-
         if (text) {
+            text = text.replace(' ','%20')
+            var baseURL = location.href.substring(0, location.href.lastIndexOf("/") + 1);
+            var page = 'q.html?q=' + text;
+            $('#q-url').val(baseURL + page);
+
+
             $('#form-enter-message').fadeOut(500, function() {
                 $('#form-url').fadeIn(500);
             });
@@ -22,7 +24,7 @@ $(function() {
         });
     });
 
-    $('#btn-test').click(function(){
-       window.open($('#q-url').val(),'_blank');
+    $('#btn-test').click(function() {
+        window.open($('#q-url').val(), '_blank');
     });
 });
