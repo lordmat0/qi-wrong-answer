@@ -8,12 +8,9 @@ $(function() {
 
         if (text) {
             $('#form-enter-message').fadeOut(500, function() {
-                $('#form-url').fadeIn(500, function() {
-
-                })
+                $('#form-url').fadeIn(500);
             });
-        } 
-
+        }
     });
 
     $('#btn-reset').click(function() {
@@ -27,6 +24,5 @@ $(function() {
 
     $('#btn-test').click(function(){
        window.open($('#q-url').val(),'_blank');
-        
     });
 });
